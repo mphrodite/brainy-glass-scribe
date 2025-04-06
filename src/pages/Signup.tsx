@@ -1,146 +1,91 @@
-import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { useToast } from '@/hooks/use-toast';
-import { Brain } from 'lucide-react';
 
-const Signup = () => {
-  const [activeTab, setActiveTab] = useState('signup');
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+import React, { useState } from "react";
+import { Link, Navigate } from "react-router-dom";
+import { useAuth } from "@/contexts/AuthContext";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { useToast } from "@/hooks/use-toast";
+
+export const Signup: React.FC = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const { user, signUp } = useAuth();
   const { toast } = useToast();
-  const navigate = useNavigate();
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Login Attempt",
-      description: "This is a placeholder. Actual authentication would happen here.",
-    });
-    navigate('/');
+    setIsLoading(true);
+    
+    try {
+      await signUp(email, password);
+      toast({
+        title: "Account created successfully",
+        description: "Welcome to BrainyNotes!",
+      });
+    } catch (error) {
+      toast({
+        title: "Error creating account",
+        description: "Please try again with a different email.",
+        variant: "destructive",
+      });
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
-  const handleSignup = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast({
-      title: "Signup Attempt",
-      description: "This is a placeholder. Actual signup logic would happen here.",
-    });
-    navigate('/');
-  };
+  if (user) {
+    return <Navigate to="/" />;
+  }
 
   return (
-    <div className="min-h-screen flex items-center justify-center text-foreground p-6" style={{ backgroundImage: 'radial-gradient(circle at center top, #432a99 0%, #1a103e 100%)' }}>
-      <div className="glass-card max-w-lg w-full rounded-2xl shadow-lg">
-        <div className="p-8">
-          <div className="flex flex-col items-center mb-6">
-            <div className="h-12 w-12 rounded-full bg-primary/80 flex items-center justify-center shadow-md">
-              <Brain className="h-6 w-6 text-white" />
+    <div className="flex items-center justify-center min-h-screen bg-background">
+      <Card className="w-full max-w-md">
+        <CardHeader>
+          <CardTitle className="text-2xl text-center">Create an Account</CardTitle>
+          <CardDescription className="text-center">Sign up to start taking smart notes</CardDescription>
+        </CardHeader>
+        <form onSubmit={handleSubmit}>
+          <CardContent className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="email">Email</Label>
+              <Input
+                id="email"
+                type="email"
+                placeholder="your@email.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
             </div>
-            <h1 className="text-3xl font-bold text-brainy-text mt-2">BrainyNotes</h1>
-          </div>
-          <Tabs defaultValue="signup" value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <TabsList className="grid w-full grid-cols-2 mb-6">
-              <TabsTrigger value="login">Login</TabsTrigger>
-              <TabsTrigger value="signup">Signup</TabsTrigger>
-            </TabsList>
-            <TabsContent value="login">
-              <form onSubmit={handleLogin} className="space-y-4">
-                <Input
-                  type="email"
-                  placeholder="Email Address"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  className="bg-white/10 border-white/20 focus-visible:ring-primary"
-                />
-                <Input
-                  type="password"
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                  className="bg-white/10 border-white/20 focus-visible:ring-primary"
-                />
-                <div className="text-sm">
-                  <a href="#" className="text-primary hover:underline">
-                    Forgot password?
-                  </a>
-                </div>
-                <Button type="submit" className="w-full py-3 bg-primary hover:bg-primary/90 transition-colors rounded-md font-medium">
-                  Login
-                </Button>
-              </form>
-              <div className="mt-4 text-center text-sm">
-                Not a member?{" "}
-                <a
-                  href="#"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setActiveTab('signup');
-                  }}
-                  className="text-primary hover:underline"
-                >
-                  Signup now
-                </a>
-              </div>
-            </TabsContent>
-            <TabsContent value="signup">
-              <form onSubmit={handleSignup} className="space-y-4">
-                <Input
-                  placeholder="Name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  required
-                  className="bg-white/10 border-white/20 focus-visible:ring-primary"
-                />
-                <Input
-                  type="email"
-                  placeholder="Email Address"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  className="bg-white/10 border-white/20 focus-visible:ring-primary"
-                />
-                <Input
-                  type="password"
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                  className="bg-white/10 border-white/20 focus-visible:ring-primary"
-                />
-                <Button type="submit" className="w-full py-3 bg-primary hover:bg-primary/90 transition-colors rounded-md font-medium">
-                  Create Account
-                </Button>
-              </form>
-              <div className="mt-4 text-center text-sm">
-                Already have an account?{" "}
-                <a
-                  href="#"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setActiveTab('login');
-                  }}
-                  className="text-primary hover:underline"
-                >
-                  Login
-                </a>
-              </div>
-            </TabsContent>
-          </Tabs>
-        </div>
-      </div>
-      <div className="fixed bottom-4 left-4">
-        <Link to="/" className="glass-button flex items-center gap-2">
-          <span>Back to Home</span>
-        </Link>
-      </div>
+            <div className="space-y-2">
+              <Label htmlFor="password">Password</Label>
+              <Input
+                id="password"
+                type="password"
+                placeholder="••••••••"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
+          </CardContent>
+          <CardFooter className="flex flex-col space-y-2">
+            <Button type="submit" className="w-full" disabled={isLoading}>
+              {isLoading ? "Creating account..." : "Sign Up"}
+            </Button>
+            <p className="text-sm text-center text-muted-foreground mt-4">
+              Already have an account?{" "}
+              <Link to="/login" className="text-primary underline underline-offset-4 hover:text-primary/90">
+                Login
+              </Link>
+            </p>
+          </CardFooter>
+        </form>
+      </Card>
     </div>
   );
 };
-
-export default Signup;
