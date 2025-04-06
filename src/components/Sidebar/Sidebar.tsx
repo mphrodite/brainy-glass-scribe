@@ -8,7 +8,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 const Sidebar: React.FC<{ isOpen: boolean; toggleSidebar: () => void }> = ({ isOpen, toggleSidebar }) => {
   const location = useLocation();
-  const { user, loading, signOut } = useAuth();
+  const { user, profile, signOut, loading } = useAuth();
 
   return (
     <>
@@ -64,12 +64,13 @@ const Sidebar: React.FC<{ isOpen: boolean; toggleSidebar: () => void }> = ({ isO
               <button className="w-full flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <Avatar className="bg-purple-600">
+                    <AvatarImage src={profile?.avatar_url || undefined} />
                     <AvatarFallback className="bg-purple-600 text-white">
-                      {user.email ? user.email.charAt(0).toUpperCase() : 'U'}
+                      {profile?.username ? profile.username.charAt(0).toUpperCase() : user.email?.charAt(0).toUpperCase()}
                     </AvatarFallback>
                   </Avatar>
                   <div>
-                    <p className="font-medium text-left">{user.email?.split('@')[0] || 'User'}</p>
+                    <p className="font-medium text-left">{profile?.username || user.email?.split('@')[0]}</p>
                     <p className="text-xs text-brainy-text/70">Free plan</p>
                   </div>
                 </div>

@@ -1,22 +1,13 @@
 
 # BrainyNotes - AI-Powered Note-Taking App
 
-BrainyNotes is a modern web application for creating, organizing, and enhancing notes with AI capabilities. Built with React, TypeScript, Tailwind CSS, and Supabase for authentication and data storage.
-
-## Features
-
-- ✍️ Create and edit notes with rich text capabilities
-- 🧠 AI-powered summaries and suggestions
-- 📱 Responsive design for desktop and mobile use
-- 🔒 Secure authentication with email/password
-- 🌙 Dark mode support
-- 🎨 Beautiful UI built with shadcn/ui components
+BrainyNotes is a modern web application for creating, organizing, and enhancing notes with AI capabilities. Built with React, TypeScript, and Supabase for authentication and data storage.
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js (v16+) & npm installed
+- Node.js (v16+) & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 - A Supabase account (free tier works fine)
 
 ### Setup
@@ -33,47 +24,45 @@ npm install
 ```
 
 3. Environment setup
-
-Create a `.env` file in the root directory with your Supabase credentials:
-
-```
-VITE_SUPABASE_URL=your_supabase_url
-VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
-```
-
-> **Note:** Email verification is disabled for easier testing. Users will be automatically logged in after registration.
+The app uses Supabase for authentication and data storage. All configuration is already set up in the project.
 
 4. Start the development server
 ```sh
 npm run dev
 ```
 
+## Key Features
+
+- ✍️ Create and edit notes with rich text capabilities
+- 🧠 AI-powered summaries and suggestions
+- 📱 Responsive design for desktop and mobile use
+- 🔒 Secure authentication with email/password
+- 🌙 Dark mode support
+
 ## Authentication
 
-The app uses Supabase authentication with email/password login. For easier development and testing, email verification has been disabled.
+The app uses Supabase authentication. Email verification is disabled for easier testing.
 
-To create a new user:
+To create your own user:
 1. Click "Sign Up" from the login page
-2. Enter your email and password
+2. Enter your details and create an account
 3. You'll be automatically logged in
+
+## Tech Stack
+
+- **Frontend**: React, TypeScript, Tailwind CSS, shadcn/ui
+- **Authentication**: Supabase Auth
+- **Database**: Supabase PostgreSQL
+- **State Management**: React Context API
+- **Styling**: Tailwind CSS with custom theming
 
 ## Project Structure
 
 - `/src/components` - Reusable UI components
-- `/src/contexts` - React context providers for auth and state management
+- `/src/contexts` - React context providers
 - `/src/hooks` - Custom React hooks
 - `/src/pages` - Main application pages
 - `/src/integrations` - Third-party integrations (Supabase)
-- `/src/lib` - Utility functions
-
-## Technologies Used
-
-- **Frontend**: React, TypeScript, Tailwind CSS
-- **UI Components**: shadcn/ui
-- **Authentication**: Supabase Auth
-- **Database**: Supabase PostgreSQL
-- **State Management**: React Context API
-- **Styling**: Tailwind CSS with shadcn/ui
 
 ## Contributing
 
@@ -82,3 +71,9 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+
+- Built with [Lovable](https://lovable.dev)
+- UI components from [shadcn/ui](https://ui.shadcn.com/)
+- Icons from [Lucide React](https://lucide.dev/)
