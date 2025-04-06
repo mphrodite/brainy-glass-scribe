@@ -7,46 +7,24 @@
   :root {
     --background: 260 60% 15%;
     --foreground: 270 25% 95%;
-
     --card: 260 60% 15%;
     --card-foreground: 270 25% 95%;
-
     --popover: 260 60% 15%;
     --popover-foreground: 270 25% 95%;
-
     --primary: 270 67% 73%;
     --primary-foreground: 270 50% 15%;
-
     --secondary: 260 40% 25%;
     --secondary-foreground: 270 25% 95%;
-
     --muted: 260 40% 25%;
     --muted-foreground: 270 25% 75%;
-
     --accent: 270 67% 73%;
     --accent-foreground: 270 50% 15%;
-
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 270 25% 95%;
-
     --border: 270 25% 30%;
     --input: 270 25% 30%;
     --ring: 270 67% 73%;
-
     --radius: 0.75rem;
-
-    --sidebar-background: 260 60% 15%;
-    --sidebar-foreground: 270 25% 95%;
-    --sidebar-primary: 270 67% 73%;
-    --sidebar-primary-foreground: 270 50% 15%;
-    --sidebar-accent: 260 40% 25%;
-    --sidebar-accent-foreground: 270 25% 95%;
-    --sidebar-border: 270 25% 30%;
-    --sidebar-ring: 270 67% 73%;
-  }
-
-  * {
-    @apply border-border;
   }
 
   body {
@@ -78,7 +56,7 @@
   }
 
   .sidebar-item {
-    @apply flex items-center gap-3 px-4 py-2 rounded-lg text-brainy-text hover:bg-white/10 transition-all duration-300;
+    @apply flex items-center gap-3 px-4 py-2 rounded-lg text-white hover:bg-white/10 transition-all duration-300;
   }
 
   .sidebar-item.active {

@@ -1,13 +1,13 @@
 
 # BrainyNotes - AI-Powered Note-Taking App
 
-BrainyNotes is a modern web application for creating, organizing, and enhancing notes with AI capabilities. Built with React, TypeScript, and Supabase for authentication and data storage.
+BrainyNotes is a streamlined, modern web application for creating and organizing notes with AI capabilities. Built with React, TypeScript, and Supabase for authentication and data storage.
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js (v16+) & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- Node.js (v16+) & npm installed
 - A Supabase account (free tier works fine)
 
 ### Setup
@@ -23,30 +23,17 @@ cd brainynotes
 npm install
 ```
 
-3. Environment setup
-The app uses Supabase for authentication and data storage. All configuration is already set up in the project.
-
-4. Start the development server
+3. Start the development server
 ```sh
 npm run dev
 ```
 
 ## Key Features
 
-- ✍️ Create and edit notes with rich text capabilities
+- ✍️ Create and edit notes with rich text
 - 🧠 AI-powered summaries and suggestions
-- 📱 Responsive design for desktop and mobile use
+- 📱 Responsive design for all devices
 - 🔒 Secure authentication with email/password
-- 🌙 Dark mode support
-
-## Authentication
-
-The app uses Supabase authentication. Email verification is disabled for easier testing.
-
-To create your own user:
-1. Click "Sign Up" from the login page
-2. Enter your details and create an account
-3. You'll be automatically logged in
 
 ## Tech Stack
 
@@ -54,26 +41,23 @@ To create your own user:
 - **Authentication**: Supabase Auth
 - **Database**: Supabase PostgreSQL
 - **State Management**: React Context API
-- **Styling**: Tailwind CSS with custom theming
 
 ## Project Structure
 
-- `/src/components` - Reusable UI components
-- `/src/contexts` - React context providers
-- `/src/hooks` - Custom React hooks
-- `/src/pages` - Main application pages
-- `/src/integrations` - Third-party integrations (Supabase)
+```
+src/
+├── components/     # Reusable UI components
+├── contexts/       # React context providers
+├── hooks/          # Custom React hooks
+├── integrations/   # Third-party integrations (Supabase)
+├── lib/            # Utility functions
+└── pages/          # Main application pages
+```
 
-## Contributing
+## Authentication
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+The app uses Supabase authentication with email verification disabled for easier testing.
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Acknowledgments
-
-- Built with [Lovable](https://lovable.dev)
-- UI components from [shadcn/ui](https://ui.shadcn.com/)
-- Icons from [Lucide React](https://lucide.dev/)
+This project is licensed under the MIT License.
