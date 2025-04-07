@@ -84,4 +84,9 @@
   .sidebar-item.active {
     @apply bg-white/10;
   }
+  
+  /* Tab styles */
+  .tabs-trigger {
+    @apply hover:bg-white/20 transition-all data-[state=active]:bg-primary/70 data-[state=active]:text-white;
+  }
 }

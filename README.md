@@ -44,9 +44,9 @@ npm run dev
 The app uses Supabase authentication. Email verification is disabled for easier testing.
 
 To create your own user:
-1. Click "Sign Up" from the login page
-2. Enter your details and create an account
-3. You'll be automatically logged in
+1. Navigate to the Auth page by clicking "Login" or "Sign Up"
+2. Choose to sign up and enter your details to create an account
+3. You'll be automatically logged in after successful account creation
 
 ## Tech Stack
 
